@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+
+    <style>
+
+        h1{
+            text-align: center;
+        }
+        
+        h2{
+            text-align: center;
+        }
+
+        .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 40%;
+        margin: 2% auto;
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+
+        body {
+        background-color: #f7f6f9;
+        font-family: sans-serif;
+        }
+
+        article {
+        margin: 10px 0;
+        }
+
+        button {
+        margin-top: 30px;
+        background-color: #3498db;
+        color: white;
+        border-radius: 6px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 16px;
+        align-self: center;
+        transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+        background-color: #2980b9;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+        margin-right: 10px;
+        }
+
+        label {
+        font-weight: normal;
+        }
+
+        #pruebita {
+        margin-top: 20px;
+        text-align: center;
+        font-weight: bold;
+        color: crimson;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+    <h1>Menú Peruanito</h1>
+
+
+        <h2>Carta Principal</h2>
+        <div>
+            <article>
+                <input type="radio" id="ternera"><label for="1">Entrecot de ternera</label>
+            </article>
+            <article>
+                <input type="radio" id="pesto"><label for="2">Macarrones de Pesto</label>
+            </article>
+            <article>
+                <input type="radio" id="parnesana"><label for="3">Risotto cremoso a la parnesana</label>
+            </article>
+            <article>
+                <input type="radio" id="tomate"><label for="4">Albóndigas de coliflor con tomate</label>
+            </article>
+        </div>
+
+
+        <h2>Preferencias/intolerancias</h2>
+        <div>
+            <article>
+                <input type="checkbox" id="vegano"><label for="5">Vegano?</label>
+            </article>
+            <article>
+                <input type="checkbox" id="gluten"><label for="6">Intolerante al gluten</label>
+            </article>
+            <article>
+                <input type="checkbox" id="lactosa"><label for="7">Intolerancia a la lactosa</label>
+            </article>
+        </div>
+
+    <button type="button" onclick="comprobarAlergia()">Pedir</button>
+    <p id="pruebita"></p>
+    </div>
+
+    <script>
+
+        const ENTRECOT = document.getElementById("ternera");
+        const PESTO = document.getElementById("pesto"); 
+        const PARNESANA = document.getElementById("parnesana");
+        const TOMATE = document.getElementById("tomate");
+
+        const VEGANO = document.getElementById("vegano");
+        const GLUTEN = document.getElementById("gluten");
+        const LACTOSA = document.getElementById("lactosa");
+
+
+        function comprobarAlergia(){
+
+            if ((PESTO.checked && GLUTEN.checked) || (PARNESANA.checked && LACTOSA.checked)){
+                document.getElementById("pruebita").innerHTML="No comas eso, eres alérgico"
+            } else {
+                document.getElementById("pruebita").innerHTML="todo good"
+            }
+
+        }
+    </script>
+</body>
+</html>
